@@ -5,8 +5,8 @@
 		<tr>
 			<td><?php echo $category->id; ?></td>
 			<td><?php echo $category->name;?></td>
-			<td><input class="btn btn-primary" value="編集" style="width:25px"></td>
-			<td><input class="btn btn-danger" value="削除" style="width:25px"></td>
+			<td><a href="<?php echo Uri::create('categories/edit/' . $category->id); ?>" class="btn btn-primary" style="width:28px">編集</a></td>
+			<td><a href="<?php echo Uri::create('categories/delete/' . $category->id); ?>" onclick="return confirm('本当に削除しますか？')" class="btn btn-danger" style="width:28px">削除</a></td>
 		</tr>
 	<?php endforeach; ?>
 </table>
