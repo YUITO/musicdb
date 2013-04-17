@@ -32,7 +32,9 @@
 					</ul>
 				</div>
 				<div class="span9">
-					<h2><?php echo $title; ?></h2>
+					<h2>
+						<?php echo $title; ?>
+					</h2>
 					<?php echo $content; ?>
 				</div>
 			</div>
