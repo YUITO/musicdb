@@ -24,11 +24,11 @@
 				<div class="span3">
 					<ul class="nav nav-list well">
 						<li class="nav-header">メニュー</li>
-						<li><a href="<?php echo Uri::create('songs'); ?>">曲一覧</a></li>
-						<li><a href="<?php echo Uri::create('categories'); ?>">カテゴリ一覧</a></li>
-						<li><a href="<?php echo Uri::create('writers'); ?>">作曲者一覧</a></li>
+						<li><a href="<?php echo Uri::create('index.php/songs'); ?>">曲一覧</a></li>
+						<li><a href="<?php echo Uri::create('index.php/categories'); ?>">カテゴリ一覧</a></li>
+						<li><a href="<?php echo Uri::create('index.php/writers'); ?>">作曲者一覧</a></li>
 						<li class="nav-header">管理者メニュー</li>
-						<li><a href="<?php echo Uri::create('owner'); ?>">自作カテゴリ管理</a></li>
+						<li><a href="<?php echo Uri::create('index.php/owners'); ?>">自作カテゴリ管理</a></li>
 					</ul>
 				</div>
 				<div class="span9">
