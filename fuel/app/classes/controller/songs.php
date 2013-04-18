@@ -20,7 +20,7 @@ class Controller_Songs extends Controller_Template
 		$id and $data['song'] = Model_Song::find($id);
 		if(!$data['song'])
 		{
-			Response::redirect('songs');
+			Response::redirect('index.php/songs');
 		}
 		$this->template->title = $data['song']->title;
 		$this->template->content = View::forge('songs/view',$data);
@@ -56,7 +56,7 @@ class Controller_Songs extends Controller_Template
 		
 			if($song->save())
 			{
-				Response::redirect('songs');
+				Response::redirect('index.php/songs');
 			}
 		}
 		
@@ -102,7 +102,7 @@ class Controller_Songs extends Controller_Template
 			$query->where('id', '=', $id);
 		
 			$result = $query->execute();
-			Response::redirect('songs');
+			Response::redirect('index.php/songs');
 		}
 		
 		$this->template->title = '編集';
@@ -116,7 +116,7 @@ class Controller_Songs extends Controller_Template
 		}
 		if($query->execute())
 		{
-			Response::redirect('songs');
+			Response::redirect('index.php/songs');
 		}
 	}
 }

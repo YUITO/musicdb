@@ -29,7 +29,7 @@ class Controller_Categories extends Controller_Template
 			$category->name = $fields['name'];
 			if($category->save())
 			{
-				Response::redirect('categories');
+				Response::redirect('index.php/categories');
 			}
 		}
 		
@@ -63,7 +63,7 @@ class Controller_Categories extends Controller_Template
 			$query->where('id', '=', $id);
 		
 			$result = $query->execute();
-			Response::redirect('categories');
+			Response::redirect('index.php/categories');
 		}
 		
 		$this->template->title = '編集';
@@ -79,7 +79,7 @@ class Controller_Categories extends Controller_Template
 		}
 		if($query->execute())
 		{
-			Response::redirect('categories');
+			Response::redirect('index.php/categories');
 		}
 		
 	}

@@ -14,7 +14,7 @@
 		<div class="topbar">
 			<div class="fill">
 				<div class="container">
-					<h1><?php echo Html::anchor('songs','MusicDB'); ?><hr></h1>
+					<h1><a href="<?php echo Uri::create('index.php/songs'); ?>">MusicDB</a><hr></h1>
 				</div>
 			</div>
 		</div>
