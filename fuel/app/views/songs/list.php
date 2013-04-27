@@ -1,4 +1,4 @@
-<a href="<?php echo Uri::create('index.php/songs/create'); ?>" class="pull-right">新しい曲を作成する</a>
+﻿<a href="<?php echo Uri::create('index.php/songs/create'); ?>" class="pull-right">新しい曲を作成する</a>
 <table class="table table-striped table-borderd">
 	<tr><th style="width:5%">id</th><th style="width:20%">曲名</th><th style="width:13%">作曲者</th><th style="width:13%">カテゴリ</th><th style="width:21%">コメント</th><th style="width:8%"></th><th style="width:10%"></th><th style="width:10%"></th></tr>
 	<?php foreach ($songs as $song): ?>
