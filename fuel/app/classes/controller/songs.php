@@ -61,7 +61,7 @@ class Controller_Songs extends Controller_Template
 		}
 		
 		$this->template->title = '曲の新規作成';
-		$this->template->set('content', $form->build(), false);
+		$this->template->set('content', $form->build('index.php/songs/create'), false);
 	}
 	public function action_edit($id=0)
 	{
@@ -106,7 +106,7 @@ class Controller_Songs extends Controller_Template
 		}
 		
 		$this->template->title = '編集';
-		$this->template->set('content', $form->build(), false);
+		$this->template->set('content', $form->build('index.php/songs/edit/' . $id), false);
 	}
 	public function action_delete($id=0)
 	{

@@ -34,7 +34,7 @@ class Controller_Categories extends Controller_Template
 		}
 		
 		$this->template->title = 'カテゴリ新規作成';
-		$this->template->set('content', $form->build(), false);
+		$this->template->set('content', $form->build('index.php/categories/create'), false);
 	}
 	
 	public function action_edit($id=0)
@@ -67,7 +67,7 @@ class Controller_Categories extends Controller_Template
 		}
 		
 		$this->template->title = '編集';
-		$this->template->set('content', $form->build(), false);
+		$this->template->set('content', $form->build('index.php/categories/edit/' . $id), false);
 		
 	}
 	
