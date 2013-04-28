@@ -2,6 +2,14 @@
 
 class Controller_Categories extends Controller_Template
 {
+	public function before()
+	{
+		parent::before();
+		if(!Auth::check() and !in_array(Request::active()->action, array('login')))
+		{
+			Response::redirect('index.php/songs/login');
+		}
+	}
 	
 	public function action_index()
 	{

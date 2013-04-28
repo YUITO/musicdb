@@ -3,6 +3,15 @@
 class Controller_Songs extends Controller_Template
 {
 	
+	public function before()
+	{
+		parent::before();
+		if(!Auth::check() and !in_array(Request::active()->action, array('login','writercreate')))
+		{
+			Response::redirect('index.php/songs/login');
+		}
+	}
+	
 	public function action_index()
 	{
 		$data = array();
@@ -183,7 +192,7 @@ class Controller_Songs extends Controller_Template
 				Response::redirect('index.php/songs');
 			}
 		}
-		$this->template->title = '新規登録';
+		$this->template->title = '新規ユーザ登録';
 		$this->template->set('content', $form->build('index.php/songs/writercreate'), false);
 	}
 }
