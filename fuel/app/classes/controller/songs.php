@@ -20,6 +20,7 @@ class Controller_Songs extends Controller_Template
 			->order_by('id', 'desc')
 			->get();
 		
+		$this->template->writername = Auth::get_screen_name();
 		$this->template->title = '曲一覧';
 		$this->template->content = View::forge('songs/list', $data);
 	}
@@ -31,6 +32,7 @@ class Controller_Songs extends Controller_Template
 		{
 			Response::redirect('index.php/songs');
 		}
+		$this->template->writername = Auth::get_screen_name();
 		$this->template->title = $data['song']->title;
 		$this->template->content = View::forge('songs/view',$data);
 	}
@@ -38,6 +40,7 @@ class Controller_Songs extends Controller_Template
 	{
 		$song = Model_Song::forge();
 		//認証したUser_idを取ってきたい
+		$song->writer_id = Arr::get(Auth::get_user_id(),1);
 		$fieldset = Fieldset::forge()->add_model('Model_Song')->populate($song,true);
 		
 		$categories = Model_Category::find('all');
@@ -69,6 +72,7 @@ class Controller_Songs extends Controller_Template
 			}
 		}
 		
+		$this->template->writername = Auth::get_screen_name();
 		$this->template->title = '曲の新規作成';
 		$this->template->set('content', $form->build('index.php/songs/create'), false);
 	}
@@ -114,6 +118,7 @@ class Controller_Songs extends Controller_Template
 			Response::redirect('index.php/songs');
 		}
 		
+		$this->template->writername = Auth::get_screen_name();
 		$this->template->title = '編集';
 		$this->template->set('content', $form->build('index.php/songs/edit/' . $id), false);
 	}
@@ -153,6 +158,7 @@ class Controller_Songs extends Controller_Template
 			}
 		}
 		
+		$this->template->writername = Auth::get_screen_name();
 		$this->template->title = 'ログイン';
 		$this->template->content = View::forge('songs/login',$data);
 	}
@@ -192,6 +198,7 @@ class Controller_Songs extends Controller_Template
 				Response::redirect('index.php/songs');
 			}
 		}
+		$this->template->writername = Auth::get_screen_name();
 		$this->template->title = '新規ユーザ登録';
 		$this->template->set('content', $form->build('index.php/songs/writercreate'), false);
 	}

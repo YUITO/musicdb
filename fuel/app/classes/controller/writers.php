@@ -20,6 +20,7 @@ class Controller_Writers extends Controller_Template
 			->order_by('id', 'desc')
 			->get();
 		
+		$this->template->writername = Auth::get_screen_name();
 		$this->template->title = '作曲者一覧';
 		$this->template->content = View::forge('writers/list', $data);
 	}

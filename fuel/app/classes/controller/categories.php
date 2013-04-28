@@ -19,6 +19,7 @@ class Controller_Categories extends Controller_Template
 			->order_by('id', 'desc')
 			->get();
 		
+		$this->template->writername = Auth::get_screen_name();
 		$this->template->title = 'カテゴリ一覧';
 		$this->template->content = View::forge('categories/list', $data);
 	}
@@ -41,6 +42,7 @@ class Controller_Categories extends Controller_Template
 			}
 		}
 		
+		$this->template->writername = Auth::get_screen_name();
 		$this->template->title = 'カテゴリ新規作成';
 		$this->template->set('content', $form->build('index.php/categories/create'), false);
 	}
@@ -74,6 +76,7 @@ class Controller_Categories extends Controller_Template
 			Response::redirect('index.php/categories');
 		}
 		
+		$this->template->writername = Auth::get_screen_name();
 		$this->template->title = '編集';
 		$this->template->set('content', $form->build('index.php/categories/edit/' . $id), false);
 		

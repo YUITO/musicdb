@@ -25,7 +25,7 @@ class Model_Song extends \Orm\Model
 			'data_type' => 'int',
 			'label'     => '作曲者',
 			'validation'=> array('required','valid_string' => array(array('numeric'))),
-			'form'      => array('type' => 'text'),
+			'form'      => array('type' => 'hidden'),
 		),
 		'URL' => array(
 			'data_type' => 'varchar',
@@ -54,12 +54,12 @@ class Model_Song extends \Orm\Model
 			'cascade_delete' => false,
 		),
 		'writer' => array(
-			'key_from' => 'category_id',
+			'key_from' => 'writer_id',
 			'model_to' => 'Model_Writer',
 			'key_to' => 'id',
 			'cascade_save' => false,
 			'cascade_delete' => false,		
-		)
+		),
 	);
 
 	protected static $_observers = array(
