@@ -14,6 +14,11 @@
 		<div class="topbar">
 			<div class="fill">
 				<div class="container">
+					<?php if(Auth::check()): ?>
+						<p class="pull-right" style="margin-top:25px;">ログイン　｜　<?php echo Html::anchor('index.php/songs/logout','ログアウト');?></p>
+					<?php else: ?>
+						<p class="pull-right" style="margin-top:25px;"><?php echo Html::anchor('index.php/songs/login','ログイン');?>　｜ ログアウト</p>
+					<?php endif; ?>
 					<h1><a href="<?php echo Uri::create('index.php/songs'); ?>">MusicDB</a><hr></h1>
 				</div>
 			</div>

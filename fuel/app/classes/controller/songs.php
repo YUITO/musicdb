@@ -119,5 +119,72 @@ class Controller_Songs extends Controller_Template
 			Response::redirect('index.php/songs');
 		}
 	}
+	
+	public function action_login()
+	{
+		Auth::check() and Response::redirect('index.php/songs');
+		
+		$data = array();
+		
+		$auth = Auth::instance();
+		
+		if (Input::post('username') and Input::post('password'))
+		{
+			$username = Input::post('username');
+			$password = Input::post('password');
+			$auth = Auth::instance();
+			
+			if ($auth->login($username, $password))
+			{
+				Response::redirect('index.php/songs');
+			}
+			else
+			{
+				$data['error'] = true;
+			}
+		}
+		
+		$this->template->title = 'ログイン';
+		$this->template->content = View::forge('songs/login',$data);
+	}
+	
+	public function action_logout()
+	{
+		$auth = Auth::instance();
+		$auth->logout();
+		
+		Response::redirect('index.php/songs');
+	}
+	
+	public function action_writercreate()
+	{
+		$writer = Model_Writer::forge();
+		
+		$fieldset = Fieldset::forge()->add_model('Model_Writer')->populate($writer,true);
+		
+		$form = $fieldset->form();
+		
+		$form->add('submit', '', array('type' => 'submit', 'value' => '新規登録', 'class' => 'btn btn-primary'));
+		
+		if ($fieldset->validation()->run())
+		{
+			$fields = $fieldset->validated();
+			$auth = Auth::instance();
+			$writer = Model_Writer::forge();
+			$writer->username = $fields['username'];
+			$writer->email = '';
+			$writer->password = $auth->hash_password($fields['password']);
+			$writer->name = $fields['name'];
+			$writer->last_login = 0;
+			$writer->login_hash = '';
+			
+			if($writer->save())
+			{
+				Response::redirect('index.php/songs');
+			}
+		}
+		$this->template->title = '新規登録';
+		$this->template->set('content', $form->build('index.php/songs/writercreate'), false);
+	}
 }
 
